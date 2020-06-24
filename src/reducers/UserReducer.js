@@ -1,20 +1,16 @@
-import * as UserAction from "./action/UserAction"
-
-const initialState = {
-	name: null
-}
+const initialState = {};
 
 const userReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case 'LOGIN':
-			return action.user
-			break;
-		case 'LOGOUT':
-			return null
-		default:
-			return state
-			break;
-	}
-}
+  switch (action.type) {
+    case "LOGIN":
+      console.log("action", action);
+      return { ...state, ...action.payload.data };
 
-export default userReducer
+    case "LOGOUT":
+      return null;
+    default:
+      return state;
+  }
+};
+
+export default userReducer;

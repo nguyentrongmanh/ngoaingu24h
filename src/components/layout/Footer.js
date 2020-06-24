@@ -6,19 +6,19 @@ import { faPhone, faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg
 const Footer = ({ match }) => {
 	return (
 		<footer>
-			<div class="container">
+			<div className="container">
 				<Row>
 					<Col span={12}>
-						<div class="mb-20">
-							<FontAwesomeIcon class="footer-icon" icon={faMapMarkerAlt} />
+						<div className="mb-20">
+							<FontAwesomeIcon className="footer-icon" icon={faMapMarkerAlt} />
 							Tầng 5, Số 52 Chùa Hà, Quan Hoa, Cầu Giấy, Hà Nội
 						</div>
-						<div class="mb-20">
-							<FontAwesomeIcon class="footer-icon" icon={faEnvelope} />
+						<div className="mb-20">
+							<FontAwesomeIcon className="footer-icon" icon={faEnvelope} />
 							hotrokythuat.ngoaingu24h@gmail.com
 						</div>
-						<div class="mb-20">
-							<FontAwesomeIcon class="footer-icon" icon={faPhone} />
+						<div className="mb-20">
+							<FontAwesomeIcon className="footer-icon" icon={faPhone} />
 							0989924488
 						</div>
 						<div>
@@ -43,9 +43,9 @@ const Footer = ({ match }) => {
 							</Col>
 							<Col span={12}>
 								<div>
-									<div class="follow" >
+									<div className="follow" >
 									</div>
-									<div class="policy_style">
+									<div className="policy_style">
 										<p><strong>CÁC CHÍNH SÁCH</strong></p>
 										<p><a target="_blank" href="/chinh-sach-chung">Chính sách chung</a></p>
 										<p><a target="_blank" href="/chinh-sach-bao-mat-thong-tin">Chính sách bảo mật thông tin</a></p>

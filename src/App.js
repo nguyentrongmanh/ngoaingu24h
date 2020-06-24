@@ -3,7 +3,6 @@ import "./styles/index.css";
 import "./styles/auth.css";
 import 'antd/dist/antd.css';
 import Routers from './Routers';
-import { BrowserRouter } from "react-router-dom"
 import { createStore } from "redux"
 import appReducer from "./reducers/index"
 import { Provider } from "react-redux"

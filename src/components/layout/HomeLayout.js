@@ -6,7 +6,7 @@ import ChatPanel from "../commoms/ChatPanel";
 
 const HomeLayout = (props) => {
 	return (
-		<div class="container content">
+		<div className="container content">
 			<Row>
 				<Col span={18}>{props.children}</Col>
 				<Col span={6}>

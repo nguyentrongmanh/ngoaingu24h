@@ -1,11 +1,3 @@
-import axios from 'axios'
-import config from "./config"
-
-const apiClient = axios.create({
-	baseURL: config.baseApiUrl,
-	headers: {}
-})
-
 const getQuestions =
 {
 	status: 200,

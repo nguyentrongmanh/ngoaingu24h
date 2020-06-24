@@ -3,6 +3,19 @@ body {
   margin: 0px;
 }
 
+.custom-divider {
+  width: 140px;
+  margin-top: 0 !important;
+  border-top: 4px solid #ffb039 !important;
+}
+.custom-spin {
+  width: 100%;
+  display: flex;
+  min-height: 300px !important;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;

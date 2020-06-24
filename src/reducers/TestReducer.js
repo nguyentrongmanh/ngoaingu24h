@@ -1,19 +1,17 @@
-
 const initialState = {
-	name: null
-}
+  name: null,
+};
 
 const userReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case 'ADD_QUESTIONS_LIST':
-			return action.user
-			break;
-		case 'ADD_ANSWER_LIST':
-			return null
-		default:
-			return state
-			break;
-	}
-}
+  switch (action.type) {
+    case "ADD_QUESTIONS_LIST":
+      return action.user;
 
-export default userReducer
+    case "ADD_ANSWER_LIST":
+      return null;
+    default:
+      return state;
+  }
+};
+
+export default userReducer;
