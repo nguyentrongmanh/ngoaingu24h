@@ -12,6 +12,7 @@ import avartar from "../../assets/images/default_avatar.png";
 import Notification from "../commoms/Notification";
 import Logo from "../../assets/images/logo.jpg";
 import { isEmpty } from "lodash";
+import { Button } from "antd";
 
 const Header = () => {
   const user = useSelector((state) => state.user);
@@ -56,9 +57,21 @@ const Header = () => {
                   <Link to="/login">Đăng nhập</Link>
                 </div>
               ) : (
-                <div>
-                  <img className="header-avatar" src={avartar} alt="avatar" />
-                </div>
+                <>
+                  <div>
+                    <img className="header-avatar" src={avartar} alt="avatar" />
+                  </div>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    className="event-link"
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      document.location.reload();
+                    }}
+                  >
+                    Đăng xuất
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -86,9 +99,13 @@ const Header = () => {
               <div className="item-link home">
                 <Link to="/">Trang chủ</Link>
               </div>
-              <div className="item-link hover-categories-panel">
-                <Link to="/my-all-courses">Khoá học của tôi</Link>
-              </div>
+              {!isEmpty(user) ? (
+                <div className="item-link hover-categories-panel">
+                  <Link to={`/my-all-courses/${user.id}`}>
+                    Khoá học của tôi
+                  </Link>
+                </div>
+              ) : null}
               <div className="item-link hover-categories-panel">
                 <a href="/tin-tuc" onMouseOver={() => {}}>
                   Tin tức

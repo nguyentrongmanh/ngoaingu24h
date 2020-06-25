@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Empty, Row, Col, Typography, Button, Spin } from "antd";
 import { Link } from "react-router-dom";
 
-export const CourseListView = ({ data, loading }) => {
+export const CourseListCardView = ({ data, loading, detailUrl }) => {
   return (
     <div style={{ width: "100%" }}>
       <Row justify="center">

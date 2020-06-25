@@ -1,6 +1,10 @@
 .dashboard-header {
   display: flex;
   align-items: center;
+  background-color: #c21b17;
+}
+.dashboard-top-menu {
+  background-color: #c21b17 !important;
 }
 .logo {
   width: 120px;
@@ -12,4 +16,9 @@
 
 .site-layout-background {
   background: #fff;
+}
+
+.video_lesson_prev {
+  width: 100% !important;
+  height: unset !important;
 }

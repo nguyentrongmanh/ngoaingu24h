@@ -1,5 +1,4 @@
 import React from "react";
-import Lesson from "./components/home/Lesson";
 import Test from "./components/home/Test";
 import TestDetail from "./components/home/TestDetail";
 import Document from "./components/home/Document";
@@ -9,11 +8,22 @@ import { DashboardPage } from "./components/dashboard/DashboardPage";
 import { HomePage } from "./components/home/HomePage";
 import { LoginController } from "./components/auth/login/LoginController";
 import { RegisterController } from "./components/auth/register/RegisterController";
+import { LessonDetailController } from "./components/lesson/lesson-detail/LessonDetailController";
 const Routers = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/lesson" component={Lesson} />
+        <Route
+          exact
+          path="/lesson/:lessonId"
+          component={LessonDetailController}
+        />
+        <Route exact path="/lesson/test/:lessonId">
+          <LessonDetailController type="test" />
+        </Route>
+        <Route exact path="/lesson/home-work/:lessonId">
+          <LessonDetailController type="home-work" />
+        </Route>
         <Route exact path="/login" component={LoginController} />
         <Route exact path="/test" component={Test} />
         <Route exact path="/test/detail" component={TestDetail} />

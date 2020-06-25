@@ -3,5 +3,7 @@ import config from "./config";
 
 export const apiClient = axios.create({
   baseURL: config.baseApiUrl,
-  headers: {},
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
 });

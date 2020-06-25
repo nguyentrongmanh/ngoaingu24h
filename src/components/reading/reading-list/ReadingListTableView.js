@@ -2,9 +2,20 @@ import React from "react";
 import { Table, Popconfirm, Button, Row, notification } from "antd";
 import { apiClient } from "../../../api";
 
-export const ReadingListView = ({ data, loading }) => {
+export const ReadingListView = ({ data, loading, onSelect }) => {
+  const handleSelectedRowChange = (selectedRowKeys) => {
+    onSelect(selectedRowKeys);
+  };
+
   return (
     <Table
+      rowSelection={
+        onSelect
+          ? {
+              onChange: handleSelectedRowChange,
+            }
+          : undefined
+      }
       rowKey="id"
       loading={loading}
       columns={[
@@ -61,14 +72,14 @@ export const ReadingListView = ({ data, loading }) => {
               <Row>
                 <Popconfirm
                   onConfirm={() => {
-                    apiClient.get(`/v1/user/delete/${value}`).then(() => {
+                    apiClient.get(`/v1/question/delete/${value}`).then(() => {
                       notification.success({ message: "Xóa thành công" });
                       setTimeout(() => {
                         document.location.reload();
                       }, 1500);
                     });
                   }}
-                  title="Bạn có chắc chắn muốn xóa người dùng này？"
+                  title="Bạn có chắc chắn muốn xóa câu hỏi này？"
                   okText="Có"
                   cancelText="Không"
                 >

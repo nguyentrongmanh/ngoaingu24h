@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { ListeningListView } from "./ListeningListView";
-import { apiClient } from "../../../api";
+import { TeacherListSelectView } from "./TeacherListSelectView";
+import { apiClient } from "../../api";
 
-export const ListeningListController = ({ onChange }) => {
+export const TeacherListController = ({ onSelect = () => {} }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     apiClient
-      .get("/v1/question/list", { params: { type: 2 } })
+      .get("/v1/teacher/list")
       .then(({ data }) => {
-        console.log("data", data);
         setData(data.data);
       })
       .catch((error) => console.log("error", error))
@@ -20,6 +19,6 @@ export const ListeningListController = ({ onChange }) => {
   }, []);
 
   return (
-    <ListeningListView data={data} loading={loading} onSelect={onChange} />
+    <TeacherListSelectView data={data} loading={loading} onSelect={onSelect} />
   );
 };

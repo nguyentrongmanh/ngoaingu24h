@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RankTable = () => {
+export const TestInfo = () => {
 	return (
 		<div class="content-block-panel">
 			<div class="main-block-header-panel">
@@ -42,5 +42,3 @@ const RankTable = () => {
 		</div>
 	);
 };
-
-export default RankTable;

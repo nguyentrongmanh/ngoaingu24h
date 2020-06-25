@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ReadingListView } from "./ReadingListView";
+import { ReadingListView } from "./ReadingListTableView";
 import { apiClient } from "../../../api";
 
-export const ReadingListController = () => {
+export const ReadingListController = ({ onChange }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -19,5 +19,5 @@ export const ReadingListController = () => {
       });
   }, []);
 
-  return <ReadingListView data={data} loading={loading} />;
+  return <ReadingListView data={data} loading={loading} onSelect={onChange} />;
 };

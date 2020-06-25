@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Descriptions,
-  Carousel,
-  Typography,
-  Button,
-  Row,
-  Spin,
-  Col,
-} from "antd";
+import { Descriptions, Carousel, Typography, Row, Spin, Col } from "antd";
+import { RegisterCourseController } from "../register-course/RegisterCourseController";
 
 export const CourseDetailView = ({ course = {}, loading }) => {
   const {
@@ -18,6 +11,7 @@ export const CourseDetailView = ({ course = {}, loading }) => {
     lesson_quantity,
     description,
   } = course;
+
   return (
     <>
       {loading && <Spin />}
@@ -51,7 +45,7 @@ export const CourseDetailView = ({ course = {}, loading }) => {
                 {lesson_quantity}
               </Descriptions.Item>
             </Descriptions>
-            <Button type="primary">Đăng kí</Button>
+            <RegisterCourseController />
           </Col>
         </Row>
       )}

@@ -18,6 +18,7 @@ export const LoginController = () => {
     apiClient
       .post("/v1/login", { ...data })
       .then(({ data }) => {
+        localStorage.setItem("token", data.token.token);
         setLoading(false);
         dispatch(signin(data));
         history.push("/");

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Form, Input, Radio, Button, Upload, message } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Upload, message } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
+import { TeacherListController } from "../../teacher-list/TeacherListController";
 
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -17,13 +18,9 @@ function beforeUpload(file) {
   return false;
 }
 
-export const AddUserView = ({ onSubmit, loading, error }) => {
-  const [errors, setErrors] = useState(error);
+export const AddCourseView = ({ onSubmit, loading, error }) => {
   const [imageUrl, setImageUrl] = useState();
-  useEffect(() => {
-    setErrors(error);
-  }, [error]);
-
+  const [form] = Form.useForm();
   const handleChange = (info) => {
     console.log("info", info);
     getBase64(info.file, (imageUrl) => setImageUrl(imageUrl));
@@ -37,6 +34,7 @@ export const AddUserView = ({ onSubmit, loading, error }) => {
 
   return (
     <Form
+      form={form}
       layout="vertical"
       onFinish={(data) => {
         console.log("data", data);
@@ -44,40 +42,29 @@ export const AddUserView = ({ onSubmit, loading, error }) => {
       }}
     >
       <Form.Item
-        label="Email"
+        label="Tên khóa học"
         rules={[{ required: true }]}
-        name="email"
-        validateStatus={errors && errors["email"] ? "error" : undefined}
-        help={errors && errors["email"] ? errors["email"][0] : undefined}
+        name="name"
+        validateStatus={error && error.email ? "error" : null}
+        help={error ? error.email[0] : null}
       >
-        <Input
-          onChange={() => {
-            try {
-              const { email, ...restErrors } = errors;
-              setErrors(restErrors);
-            } catch (error) {}
-          }}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Mật khẩu"
-        rules={[{ required: true }]}
-        name="password"
-        validateStatus={errors && errors["password"] ? "error" : undefined}
-        help={errors && errors["password"] ? errors["password"][0] : undefined}
-      >
-        <Input
-          onChange={() => {
-            try {
-              const { password, ...restErrors } = errors;
-              setErrors(restErrors);
-            } catch (error) {}
-          }}
-        />
-      </Form.Item>
-      <Form.Item label="Họ và tên" rules={[{ required: true }]} name="name">
         <Input />
       </Form.Item>
+      <Form.Item label="Ngôn ngữ" rules={[{ required: true }]} name="language">
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Giáo viên"
+        rules={[{ required: true }]}
+        name="teacher_id"
+      >
+        <TeacherListController
+          onSelect={(value) => {
+            form.setFieldsValue({ teacher_id: value });
+          }}
+        />
+      </Form.Item>
+
       <Form.Item
         label="Ảnh đại diện"
         name="image"
@@ -87,7 +74,6 @@ export const AddUserView = ({ onSubmit, loading, error }) => {
         }}
       >
         <Upload
-          name="image"
           className="avatar-uploader"
           showUploadList={false}
           beforeUpload={beforeUpload}
@@ -100,19 +86,8 @@ export const AddUserView = ({ onSubmit, loading, error }) => {
           )}
         </Upload>
       </Form.Item>
-      <Form.Item label="Tuổi" name="age">
-        <Input datatype="number" />
-      </Form.Item>
-      <Form.Item label="Công ty" name="company">
-        <Input />
-      </Form.Item>
-      <Form.Item label="Quyền" name="role" initialValue={0}>
-        <Radio.Group>
-          <Radio value={0}>Người dùng</Radio>
-          <Radio value={1}>Admin</Radio>
-        </Radio.Group>
-      </Form.Item>
-      <Form.Item label="Mô tả bản thân" name="intro">
+
+      <Form.Item label="Mô tả" name="description">
         <TextArea autoSize={{ minRows: 3 }} />
       </Form.Item>
       <Form.Item>

@@ -2,53 +2,39 @@ import React from "react";
 import { Table, Popconfirm, Button, Row, notification } from "antd";
 import { apiClient } from "../../../api";
 
-export const ListeningListView = ({ data, loading, onSelect }) => {
-  const handleSelectedRowChange = (selectedRowKeys) => {
-    onSelect(selectedRowKeys);
-  };
+export const TeacherListTableView = ({ data, loading }) => {
   return (
     <Table
-      rowSelection={
-        onSelect
-          ? {
-              onChange: handleSelectedRowChange,
-            }
-          : undefined
-      }
       rowKey="id"
       loading={loading}
       columns={[
         { title: "ID", dataIndex: "id" },
         {
-          title: "Audio",
-          dataIndex: "audio_url",
-          render: (value) => {
-            return (
-              <audio controls>
-                <source src={value} type="audio/mpeg" />
-              </audio>
-            );
-          },
+          title: "Họ và tên",
+          dataIndex: "name",
         },
         {
-          title: "Câu trả lời",
-          dataIndex: "answer",
-          render: (value) => {
-            switch (value) {
-              case 1:
-                return "A";
-              case 2:
-                return "B";
-              case 3:
-                return "C";
-              default:
-                return "D";
-            }
-          },
+          title: "Email",
+          dataIndex: "email",
         },
         {
-          title: "Giải thích",
-          dataIndex: "explain",
+          title: "Tuổi",
+          dataIndex: "age",
+        },
+        {
+          title: "SĐT",
+          dataIndex: "phone",
+        },
+        {
+          title: "Công ty",
+          dataIndex: "company",
+        },
+        {
+          title: "Quyền",
+          dataIndex: "role",
+          render(value) {
+            return <p> {value === 1 ? "Admin" : "Người dùng"}</p>;
+          },
         },
         {
           title: "Ngày tạo",
@@ -62,14 +48,14 @@ export const ListeningListView = ({ data, loading, onSelect }) => {
               <Row>
                 <Popconfirm
                   onConfirm={() => {
-                    apiClient.get(`/v1/question/delete/${value}`).then(() => {
+                    apiClient.get(`/v1/user/delete/${value}`).then(() => {
                       notification.success({ message: "Xóa thành công" });
                       setTimeout(() => {
                         document.location.reload();
                       }, 1500);
                     });
                   }}
-                  title="Bạn có chắc chắn muốn xóa câu hỏi này？"
+                  title="Bạn có chắc chắn muốn xóa người dùng này？"
                   okText="Có"
                   cancelText="Không"
                 >

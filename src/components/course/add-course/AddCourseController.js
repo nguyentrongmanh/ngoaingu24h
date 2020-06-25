@@ -1,43 +1,40 @@
 import React, { useState } from "react";
-import { AddListeningView } from "./AddListeningView";
+import { AddCourseView } from "./AddCourseView";
 import { apiClient } from "../../../api";
 import { notification } from "antd";
 import { useHistory } from "react-router-dom";
 
-export const AddListeningController = () => {
+export const AddCourseController = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const history = useHistory();
   const handleSubmit = (data) => {
     setLoading(true);
-    console.log('data', data)
+    console.log("data", data);
     const formData = new FormData();
-    formData.append("audio", data.audio);
-    formData.append("type", 2);
-    formData.append("answer", data.answer);
-
+    // eslint-disable-next-line no-unused-vars
+    for (const k in data) {
+      formData.append(k, data[k]);
+    }
     apiClient({
       method: "post",
-      url: "/v1/question/add",
+      url: "/v1/class/add",
       data: formData,
     })
       .then(() => {
+        setLoading(false);
         notification.success({ message: "Thêm thành công", duration: 1.5 });
-        setTimeout(() => {
-          history.push("/dashboard/listenings");
-          // window.location.href = "../listenings";
+        setTimeout((params) => {
+          history.push("/dashboard/courses");
         }, 1500);
       })
       .catch((error) => {
         console.log("error", error.response);
         setError(error.response.data.error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   };
 
   return (
-    <AddListeningView onSubmit={handleSubmit} loading={loading} error={error} />
+    <AddCourseView onSubmit={handleSubmit} loading={loading} error={error} />
   );
 };

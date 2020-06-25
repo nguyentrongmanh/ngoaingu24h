@@ -7,17 +7,16 @@ export const AddListeningView = ({ onSubmit, loading, error }) => {
     <Form
       layout="vertical"
       onFinish={(data) => {
-        console.log("data", data);
-        onSubmit({ ...data, type: 2,audio: data.audio.file});
+        onSubmit({ ...data });
       }}
     >
       <Form.Item
-        // valuePropName="fileList"
+        valuePropName="file"
         label="Audio"
-        // getValueFromEvent={(file) => {
-        //   console.log("file", file);
-        //   return file.fileList;
-        // }}
+        getValueFromEvent={(file) => {
+          console.log("file", file);
+          return file.file;
+        }}
         rules={[{ required: true }]}
         name="audio"
         validateStatus={error && error.email ? "error" : null}
@@ -25,14 +24,7 @@ export const AddListeningView = ({ onSubmit, loading, error }) => {
       >
         <Upload
           accept=".mp3"
-          beforeUpload={(file) => {
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-              console.log(e.target.result);
-            };
-            reader.readAsDataURL(file);
-
+          beforeUpload={() => {
             // Prevent upload
             return false;
           }}

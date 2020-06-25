@@ -1,9 +1,13 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Form, Button, Input } from "antd";
 
-export const RegisterView = ({ onSubmit, loading }) => {
+export const RegisterView = ({ onSubmit, loading, error }) => {
+  const [errors, setErrors] = useState(error);
+  useEffect(() => {
+    setErrors(error);
+  }, [error]);
   return (
     <div
       style={{
@@ -24,8 +28,22 @@ export const RegisterView = ({ onSubmit, loading }) => {
               onSubmit(data);
             }}
           >
-            <Form.Item className="auth-form__item" name="email">
+            <Form.Item
+              className="auth-form__item"
+              name="email"
+              validateStatus={errors && errors["email"] ? "error" : undefined}
+              help={errors && errors["email"] ? errors["email"][0] : undefined}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input
+                onChange={() => {
+                  const { email, ...restErrors } = errors;
+                  setErrors(restErrors);
+                }}
                 prefix={
                   <MailOutlined
                     type="mail"
@@ -35,8 +53,26 @@ export const RegisterView = ({ onSubmit, loading }) => {
                 placeholder="Email"
               />
             </Form.Item>
-            <Form.Item className="auth-form__item" name="password">
+            <Form.Item
+              validateStatus={
+                errors && errors["password"] ? "error" : undefined
+              }
+              help={
+                errors && errors["password"] ? errors["password"][0] : undefined
+              }
+              className="auth-form__item"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input
+                onChange={() => {
+                  const { password, ...restErrors } = errors;
+                  setErrors(restErrors);
+                }}
                 prefix={
                   <LockOutlined
                     type="lock"
@@ -47,8 +83,28 @@ export const RegisterView = ({ onSubmit, loading }) => {
                 placeholder="Mật khẩu"
               />
             </Form.Item>
-            <Form.Item className="auth-form__item" name="password_confirmation">
+            <Form.Item
+              validateStatus={
+                errors && errors["password_confirmation"] ? "error" : undefined
+              }
+              help={
+                errors && errors["password_confirmation"]
+                  ? errors["password_confirmation"][0]
+                  : undefined
+              }
+              className="auth-form__item"
+              name="password_confirmation"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input
+                onChange={() => {
+                  const { password_confirmation, ...restErrors } = errors;
+                  setErrors(restErrors);
+                }}
                 prefix={
                   <LockOutlined
                     type="lock"
@@ -59,7 +115,17 @@ export const RegisterView = ({ onSubmit, loading }) => {
                 placeholder="Xác nhận lại mật khẩu"
               />
             </Form.Item>
-            <Form.Item className="auth-form__item" name="name">
+            <Form.Item
+              validateStatus={errors && errors["name"] ? "error" : undefined}
+              help={errors && errors["name"] ? errors["name"][0] : undefined}
+              className="auth-form__item"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input
                 prefix={
                   <UserOutlined
@@ -67,6 +133,10 @@ export const RegisterView = ({ onSubmit, loading }) => {
                     style={{ color: "rgba(0,0,0,.25)" }}
                   />
                 }
+                onChange={() => {
+                  const { name, ...restErrors } = errors;
+                  setErrors(restErrors);
+                }}
                 placeholder="Họ và tên"
               />
             </Form.Item>

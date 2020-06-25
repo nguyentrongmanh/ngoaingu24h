@@ -1,23 +1,20 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import "./styles/index.css";
 import "./styles/auth.css";
-import 'antd/dist/antd.css';
-import Routers from './Routers';
-import { createStore } from "redux"
-import appReducer from "./reducers/index"
-import { Provider } from "react-redux"
-
-const store = createStore(
-	appReducer,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import "antd/dist/antd.css";
+import Routers from "./Routers";
+import { apiClient } from "./api";
+import { signin } from "./reducers/action/UserAction";
+import { useDispatch } from "react-redux";
 
 function App() {
-	return (
-		<Provider store={store}>
-			<Routers></Routers>
-		</Provider>
-	);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    apiClient.get("/v1/current_user").then(({ data }) => {
+      dispatch(signin(data));
+    });
+  });
+  return <Routers></Routers>;
 }
 
 export default App;
