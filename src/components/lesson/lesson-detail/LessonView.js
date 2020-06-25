@@ -43,7 +43,7 @@ export const LessonView = ({ lesson = {} }) => {
         </Col>
       </Row>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

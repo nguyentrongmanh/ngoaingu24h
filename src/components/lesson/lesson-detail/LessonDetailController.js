@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { LessonView } from "./LessonView";
 import { useParams } from "react-router-dom";
 import { apiClient } from "../../../api";
-import { TestInfo } from "../../home/test/TestInfo";
 
-export const LessonDetailController = ({ type }) => {
+export const LessonDetailController = () => {
   const { lessonId } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,6 +20,6 @@ export const LessonDetailController = ({ type }) => {
         setLoading(false);
       });
   }, [lessonId]);
-  if (type && type === "test") return <TestInfo />;
+
   return <LessonView lesson={data} loading={loading} />;
 };

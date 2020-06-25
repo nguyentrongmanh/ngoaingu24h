@@ -7,62 +7,62 @@ const Documentation = () => {
   const commentList = res.data.comments;
 
   return (
-    <div class="content-block-panel">
-      <div class="main-block-header-panel">
-        <div class="text-title-block-panel">Bình luận</div>
+    <div className="content-block-panel">
+      <div className="main-block-header-panel">
+        <div className="text-title-block-panel">Bình luận</div>
       </div>
-      <div class="main-block-content-panel">
+      <div className="main-block-content-panel">
         <div className="display-flex comment-item">
-          <div class="comment-avatar">
+          <div className="comment-avatar">
             <img src={defaltAvatar} alt="avatar" />
           </div>
-          <div class="comment-detail">
-            <div class="display-flex">
-              <input class="form-control" />
+          <div className="comment-detail">
+            <div className="display-flex">
+              <input className="form-control" />
             </div>
           </div>
         </div>
-        {commentList.map((comment) => (
-          <div>
+        {commentList.map((comment,i) => (
+          <div key={i}>
             <div className="display-flex comment-item">
-              <div class="comment-avatar">
+              <div className="comment-avatar">
                 <img src={defaltAvatar} alt="avatar" />
               </div>
-              <div class="comment-detail">
-                <div class="display-flex">
-                  <div class="username">{comment.username}</div>
+              <div className="comment-detail">
+                <div className="display-flex">
+                  <div className="username">{comment.username}</div>
                   <div>{comment.comment}</div>
                 </div>
-                <div class="display-flex">
-                  <div class="like-btn">
+                <div className="display-flex">
+                  <div className="like-btn">
                     <a href="/">Thích</a>
                   </div>
-                  <div class="like-btn">
+                  <div className="like-btn">
                     <a href="/">Trả lời</a>
                   </div>
-                  <div class="public-date">{comment.publishTime}</div>
+                  <div className="public-date">{comment.publishTime}</div>
                 </div>
               </div>
             </div>
             <div className="replies">
-              {comment.replies.map((reply) => (
-                <div className="display-flex comment-item">
-                  <div class="comment-avatar">
+              {comment.replies.map((reply, i) => (
+                <div className="display-flex comment-item" key={i}>
+                  <div className="comment-avatar">
                     <img src={defaltAvatar} alt="avatar" />
                   </div>
-                  <div class="comment-detail">
-                    <div class="display-flex">
-                      <div class="username">{reply.username}</div>
+                  <div className="comment-detail">
+                    <div className="display-flex">
+                      <div className="username">{reply.username}</div>
                       <div>{reply.comment}</div>
                     </div>
-                    <div class="display-flex">
-                      <div class="like-btn">
+                    <div className="display-flex">
+                      <div className="like-btn">
                         <a href="/">Thích</a>
                       </div>
-                      <div class="like-btn">
+                      <div className="like-btn">
                         <a href="/">Trả lời</a>
                       </div>
-                      <div class="public-date">{reply.publishTime}</div>
+                      <div className="public-date">{reply.publishTime}</div>
                     </div>
                   </div>
                 </div>

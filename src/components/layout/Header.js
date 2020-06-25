@@ -12,7 +12,6 @@ import avartar from "../../assets/images/default_avatar.png";
 import Notification from "../commoms/Notification";
 import Logo from "../../assets/images/logo.jpg";
 import { isEmpty } from "lodash";
-import { Button } from "antd";
 
 const Header = () => {
   const user = useSelector((state) => state.user);

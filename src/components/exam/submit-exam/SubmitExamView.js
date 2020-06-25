@@ -1,0 +1,6 @@
+import React from "react";
+import { Button } from "antd";
+
+export const SubmitExamView = ({ onSubmit }) => {
+  return <Button onClick={onSubmit}>Nộp bài</Button>;
+};

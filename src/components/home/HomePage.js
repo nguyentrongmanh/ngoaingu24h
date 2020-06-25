@@ -16,7 +16,10 @@ export const HomePage = () => {
         <Col span={20}>
           <Row justify="center" gutter={16}>
             <Switch>
-              <Route path="/course-detail/:courseId">
+              <Route path="/course-detail/info/:courseId">
+                <CourseDetailPage />
+              </Route>
+              <Route path="/course-detail/lessons/:courseId">
                 <CourseDetailPage />
               </Route>
 

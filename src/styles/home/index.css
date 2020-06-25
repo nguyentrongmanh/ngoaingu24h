@@ -1,8 +1,18 @@
 .home-banner {
   width: 100%;
 }
-.course-detail-banner{
-    border-radius: 20px;
-    width: 100%;
-    max-height: 400px;
+.ant-tabs {
+  width: 100%;
+}
+
+.react-countdown-clock {
+  position: absolute;
+  right: 400px;
+  top: 100px;
+  z-index: 1000;
+}
+.course-detail-banner {
+  border-radius: 20px;
+  width: 100%;
+  max-height: 400px;
 }

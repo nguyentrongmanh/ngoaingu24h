@@ -12,14 +12,14 @@ const Documentation = () => {
         <div className="document-item">
           <div className="display-flex">
             <FontAwesomeIcon
-              classNameName="document-icon"
+              className="document-icon"
               icon={faFileDownload}
             ></FontAwesomeIcon>
             <div>Tài Liệu: Các Thành Phần Cơ Bản Của Câu</div>
           </div>
           <div>
             <FontAwesomeIcon
-              classNameName="document-icon"
+              className="document-icon"
               icon={faDownload}
             ></FontAwesomeIcon>
           </div>
@@ -27,14 +27,14 @@ const Documentation = () => {
         <div className="document-item">
           <div className="display-flex">
             <FontAwesomeIcon
-              classNameName="document-icon"
+              className="document-icon"
               icon={faFileDownload}
             ></FontAwesomeIcon>
             <div>Tài Liệu: Các Thành Phần Cơ Bản Của Câu</div>
           </div>
           <div>
             <FontAwesomeIcon
-              classNameName="document-icon"
+              className="document-icon"
               icon={faDownload}
             ></FontAwesomeIcon>
           </div>

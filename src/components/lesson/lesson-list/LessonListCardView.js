@@ -15,7 +15,7 @@ export const LessonListCardView = ({ data }) => {
         data.map((lesson) => {
           const { name, id } = lesson;
           return (
-            <div className="content-block-panel">
+            <div className="content-block-panel" key={id}>
               <div className="main-block-header-panel">
                 <div></div>
                 <div className="text-title-block-panel">{name}</div>
@@ -33,15 +33,16 @@ export const LessonListCardView = ({ data }) => {
                   </div>
                 </Link>
                 {lesson.exams.map((exam) => {
-                  const { exam_type, name } = exam;
+                  const { exam_type, name, id: examId } = exam;
                   return (
                     <div
+                      key={examId}
                       className="topic-item-panel"
                       onClick={() => {
                         if (exam_type === 1) {
-                          return history.push(`/lesson/test/:${id}`);
+                          return history.push(`/lesson/test/${examId}`);
                         }
-                        return history.push(`/lesson/home-work/:${id}`);
+                        return history.push(`/lesson/test/${examId}`);
                       }}
                     >
                       <div className="topic-item-left-panel" />

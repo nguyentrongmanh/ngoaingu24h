@@ -1,8 +1,10 @@
 import React from "react";
 import { Card, Empty, Row, Col, Typography, Button, Spin } from "antd";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const CourseListCardView = ({ data, loading, detailUrl }) => {
+export const CourseListCardView = ({ data, loading }) => {
+  const user = useSelector((state) => state.user);
   return (
     <div style={{ width: "100%" }}>
       <Row justify="center">
@@ -30,7 +32,15 @@ export const CourseListCardView = ({ data, loading, detailUrl }) => {
                   }
                   actions={[
                     <Button>
-                      <Link to={`/course-detail/${id}`}>Xem chi tiết</Link>
+                      <Link
+                        to={
+                          !user
+                            ? `/course-detail/${id}`
+                            : `/course-detail/info/${id}`
+                        }
+                      >
+                        Xem chi tiết
+                      </Link>
                     </Button>,
                   ]}
                 >
