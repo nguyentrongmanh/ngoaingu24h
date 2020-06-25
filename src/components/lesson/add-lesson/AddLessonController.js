@@ -27,6 +27,7 @@ export const AddLessonController = ({ courseId }) => {
     <AddLessonView
       success={success}
       loading={loading}
+      error={error}
       onAddLesson={handleAddLesson}
     />
   );

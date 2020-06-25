@@ -1,7 +1,9 @@
 import React from "react";
 import defaultImg from "../../assets/images/default_avatar.png";
+import { useSelector } from "react-redux";
 
-const UserBox = ({ match }) => {
+const UserBox = () => {
+  const user = useSelector((state) => state.user);
   return (
     <div className="right-panel-box">
       <div className="right-panel-box-inner">
@@ -10,8 +12,8 @@ const UserBox = ({ match }) => {
             <img src={defaultImg} alt="avatar" />
           </div>
           <div className="user-info-panel">
-            <div className="user-name">nhu.nq158294</div>
-            <div className="user-email">nhu.nq158294@sis.hust.edu.vn</div>
+            <div className="user-name">{user.name}</div>
+            <div className="user-email">{user.email}</div>
           </div>
         </div>
         <div className="box-item">Điểm kinh nghiệm: 160</div>

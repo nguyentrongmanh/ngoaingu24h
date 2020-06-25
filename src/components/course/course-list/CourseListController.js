@@ -13,7 +13,6 @@ export const CourseListController = ({ viewType }) => {
     apiClient
       .get("/v1/class/list")
       .then(({ data }) => {
-        console.log("data", data);
         setData(data.data);
       })
       .catch((error) => console.log("error", error))

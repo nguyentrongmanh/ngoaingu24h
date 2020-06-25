@@ -58,7 +58,7 @@ body {
 
 .header-top-left {
   display: flex;
-  justify-self: start;
+  justify-self: flex-start;
 }
 
 .header-top-right {
@@ -391,7 +391,7 @@ body {
 
 .top-question {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .question-index {

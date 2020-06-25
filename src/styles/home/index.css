@@ -6,10 +6,8 @@
 }
 
 .react-countdown-clock {
-  position: absolute;
-  right: 400px;
-  top: 100px;
-  z-index: 1000;
+  margin: auto;
+  margin-bottom: 10px;
 }
 .course-detail-banner {
   border-radius: 20px;

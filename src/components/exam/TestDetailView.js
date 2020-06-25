@@ -26,15 +26,6 @@ export const TestDetailView = ({ exam = {} }) => {
       <Row justify="center" style={{ marginTop: "16px" }}>
         <Col span={22}>
           <div>
-            {time && (
-              <ReactCountdownClock
-                seconds={time * 60}
-                color="#000"
-                alpha={0.9}
-                size={150}
-              />
-            )}
-
             <Row>
               <Col span={18}>
                 {!showResult &&
@@ -115,6 +106,15 @@ export const TestDetailView = ({ exam = {} }) => {
                 )}
               </Col>
               <Col span={6}>
+                {time && (
+                  <ReactCountdownClock
+                    seconds={time * 60}
+                    color="#c21b17"
+                    alpha={0.9}
+                    size={150}
+                  />
+                )}
+
                 <UserBox />
                 <Utinities />
               </Col>
