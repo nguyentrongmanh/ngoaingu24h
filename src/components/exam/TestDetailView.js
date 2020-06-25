@@ -32,7 +32,7 @@ export const TestDetailView = ({ exam = {} }) => {
                   {!showResult &&
                     questions &&
                     questions.map((question, index) => (
-                      <Col key={question.id} span={12}>
+                      <Col key={question.id} span={24}>
                         <div className="content-block-panel">
                           <div className="main-block-content-panel">
                             <div className="top-question">
@@ -72,17 +72,17 @@ export const TestDetailView = ({ exam = {} }) => {
                               </Radio>
                               <Radio style={radioStyle} value={2}>
                                 {question.type === 1
-                                  ? `A.${question.option_a}`
+                                  ? `B.${question.option_b}`
                                   : "B"}
                               </Radio>
                               <Radio style={radioStyle} value={3}>
                                 {question.type === 1
-                                  ? `A.${question.option_a}`
+                                  ? `C.${question.option_c}`
                                   : "C"}
                               </Radio>
                               <Radio style={radioStyle} value={4}>
                                 {question.type === 1
-                                  ? `A.${question.option_a}`
+                                  ? `D.${question.option_d}`
                                   : "D"}
                               </Radio>
                             </Radio.Group>
