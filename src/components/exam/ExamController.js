@@ -13,7 +13,6 @@ export const ExamController = ({ type }) => {
     apiClient
       .get(`/v1/exam/detail/${examId}`)
       .then(({ data }) => {
-        console.log("data", data.data);
         setData(data.data);
       })
       .catch((error) => console.log("error", error))

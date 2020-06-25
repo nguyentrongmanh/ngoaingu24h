@@ -28,61 +28,69 @@ export const TestDetailView = ({ exam = {} }) => {
           <div>
             <Row>
               <Col span={18}>
-                {!showResult &&
-                  questions &&
-                  questions.map((question, index) => (
-                    <div className="content-block-panel" key={question.id}>
-                      <div className="main-block-content-panel">
-                        <div className="top-question">
-                          <div className="question-index">Câu {index + 1}</div>
-                          <div className="question-content">
-                            {question.type === 1 ? (
-                              question.content
-                            ) : (
-                              <audio controls>
-                                <source
-                                  src={question.audio_url}
-                                  type="audio/mpeg"
-                                />
-                              </audio>
-                            )}
+                <Row gutter={[8, 8]}>
+                  {!showResult &&
+                    questions &&
+                    questions.map((question, index) => (
+                      <Col key={question.id} span={12}>
+                        <div className="content-block-panel">
+                          <div className="main-block-content-panel">
+                            <div className="top-question">
+                              <div className="question-index">
+                                Câu {index + 1}
+                              </div>
+                              <div className="question-content">
+                                {question.type === 1 ? (
+                                  question.content
+                                ) : (
+                                  <audio controls>
+                                    <source
+                                      src={question.audio_url}
+                                      type="audio/mpeg"
+                                    />
+                                  </audio>
+                                )}
+                              </div>
+                            </div>
+                            <Radio.Group
+                              onChange={(e) => {
+                                if (question.answer === e.target.value) {
+                                  setScore([...score, question.id]);
+                                } else {
+                                  setScore(
+                                    score.filter(
+                                      (score) => score !== question.id
+                                    )
+                                  );
+                                }
+                              }}
+                            >
+                              <Radio style={radioStyle} value={1}>
+                                {question.type === 1
+                                  ? `A.${question.option_a}`
+                                  : "A"}
+                              </Radio>
+                              <Radio style={radioStyle} value={2}>
+                                {question.type === 1
+                                  ? `A.${question.option_a}`
+                                  : "B"}
+                              </Radio>
+                              <Radio style={radioStyle} value={3}>
+                                {question.type === 1
+                                  ? `A.${question.option_a}`
+                                  : "C"}
+                              </Radio>
+                              <Radio style={radioStyle} value={4}>
+                                {question.type === 1
+                                  ? `A.${question.option_a}`
+                                  : "D"}
+                              </Radio>
+                            </Radio.Group>
                           </div>
                         </div>
-                        <Radio.Group
-                          onChange={(e) => {
-                            if (question.answer === e.target.value) {
-                              setScore([...score, question.id]);
-                            } else {
-                              setScore(
-                                score.filter((score) => score !== question.id)
-                              );
-                            }
-                          }}
-                        >
-                          <Radio style={radioStyle} value={1}>
-                            {question.type === 1
-                              ? `A.${question.option_a}`
-                              : "A"}
-                          </Radio>
-                          <Radio style={radioStyle} value={2}>
-                            {question.type === 1
-                              ? `A.${question.option_a}`
-                              : "B"}
-                          </Radio>
-                          <Radio style={radioStyle} value={3}>
-                            {question.type === 1
-                              ? `A.${question.option_a}`
-                              : "C"}
-                          </Radio>
-                          <Radio style={radioStyle} value={4}>
-                            {question.type === 1
-                              ? `A.${question.option_a}`
-                              : "D"}
-                          </Radio>
-                        </Radio.Group>
-                      </div>
-                    </div>
-                  ))}
+                      </Col>
+                    ))}
+                </Row>
 
                 {!showResult && (
                   <SubmitExamController

@@ -9,7 +9,6 @@ import Footer from "../layout/Footer";
 import Comment from "../commoms/Comment";
 
 export const ExamView = ({ exam }) => {
-  console.log("lesson", exam);
   const { time, questions = [], id } = exam;
   return (
     <>
